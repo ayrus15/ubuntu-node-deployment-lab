@@ -5,6 +5,7 @@
    [Service]
    Type=simple
    User=ayrus15
+   EnvironmentFile=/etc/hello-app.env
    WorkingDirectory=/home/ayrus15/hello-app
    ExecStart=/usr/bin/node /home/ayrus15/hello-app/server.js
    Restart=on-failure
