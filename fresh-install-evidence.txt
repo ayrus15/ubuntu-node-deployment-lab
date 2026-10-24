@@ -1,0 +1,62 @@
+## Fresh Ubuntu (WSL2 instance, new user)
+Distributor ID:	Ubuntu
+Description:	Ubuntu 24.04.5 LTS
+Release:	24.04
+Codename:	noble
+
+## setup.sh output (second run, tail)
+==> Configuring nginx
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+Synchronizing state of nginx.service with SysV service script with /usr/lib/systemd/systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install enable nginx
+==> Firewall
+Skipping adding existing rule
+Skipping adding existing rule (v6)
+Skipping adding existing rule
+Skipping adding existing rule (v6)
+Skipping adding existing rule
+Skipping adding existing rule (v6)
+Default incoming policy changed to 'deny'
+(be sure to update your rules accordingly)
+Default outgoing policy changed to 'allow'
+(be sure to update your rules accordingly)
+Firewall is active and enabled on system startup
+==> Backups and health check
+==> Checking
+active
+active
+active
+Hello from DESKTOP-TH61CTF on Ubuntu
+Visits recorded: 1
+Done.
+
+## Services
+active
+active
+active
+
+## Site over HTTPS
+Hello from DESKTOP-TH61CTF on Ubuntu
+Visits recorded: 5
+Hello from DESKTOP-TH61CTF on Ubuntu
+Visits recorded: 6
+
+## Firewall
+Status: active
+Logging: on (low)
+Default: deny (incoming), allow (outgoing), disabled (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+22/tcp (OpenSSH)           ALLOW IN    Anywhere                  
+80/tcp (Nginx HTTP)        ALLOW IN    Anywhere                  
+443/tcp (Nginx HTTPS)      ALLOW IN    Anywhere                  
+22/tcp (OpenSSH (v6))      ALLOW IN    Anywhere (v6)             
+80/tcp (Nginx HTTP (v6))   ALLOW IN    Anywhere (v6)             
+443/tcp (Nginx HTTPS (v6)) ALLOW IN    Anywhere (v6)             
+
+
+## Root cron
+15 2 * * * /usr/local/bin/hello-backup.sh

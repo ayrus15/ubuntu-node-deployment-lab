@@ -37,7 +37,7 @@ fi
 sudo -u postgres psql -d hello_db -c "SET ROLE hello_app; CREATE TABLE IF NOT EXISTS visits (id serial PRIMARY KEY, visited_at timestamptz DEFAULT now(), path text);"
 
 echo "==> Installing the systemd service"
-sed -e "s#/home/ayrus15#$HOME#g" -e "s#^User=.*#User=$USER#" "$REPO_DIR/config/hello-app.service" | sudo tee /etc/systemd/system/hello-app.service > /dev/null
+sed -e "s#/home/ayrus15#$HOME#g" -e "s#^[[:space:]]*User=.*#User=$USER#" "$REPO_DIR/config/hello-app.service" | sudo tee /etc/systemd/system/hello-app.service > /dev/null
 sudo systemctl daemon-reload
 sudo systemctl enable hello-app
 sudo systemctl restart hello-app
