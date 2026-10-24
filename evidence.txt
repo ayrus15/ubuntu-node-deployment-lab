@@ -1,0 +1,60 @@
+## Ubuntu version
+Distributor ID:	Ubuntu
+Description:	Ubuntu 24.04.5 LTS
+Release:	24.04
+Codename:	noble
+
+## Service status
+● hello-app.service - Hello Node app
+     Loaded: loaded (/etc/systemd/system/hello-app.service; enabled; preset: enabled)
+     Active: active (running) since Sat 2026-10-24 08:45:19 UTC; 49min ago
+   Main PID: 12394 (node)
+      Tasks: 10 (limit: 2218)
+     Memory: 13.8M (peak: 22.3M)
+        CPU: 1.211s
+     CGroup: /system.slice/hello-app.service
+             └─12394 /usr/bin/node /home/ayrus15/hello-app/server.js
+
+Oct 24 08:45:19 DESKTOP-TH61CTF systemd[1]: hello-app.service: Scheduled restart job, restart counter is at 1.
+Oct 24 08:45:19 DESKTOP-TH61CTF systemd[1]: Started hello-app.service - Hello Node app.
+Oct 24 08:45:20 DESKTOP-TH61CTF node[12394]: Listening on 3000
+
+## Restart after kill -9 (journal)
+Oct 24 08:39:41 DESKTOP-TH61CTF systemd[1]: Started hello-app.service - Hello Node app.
+Oct 24 08:39:42 DESKTOP-TH61CTF node[12347]: Listening on 3000
+Oct 24 08:45:16 DESKTOP-TH61CTF systemd[1]: hello-app.service: Main process exited, code=killed, status=9/KILL
+Oct 24 08:45:16 DESKTOP-TH61CTF systemd[1]: hello-app.service: Failed with result 'signal'.
+Oct 24 08:45:16 DESKTOP-TH61CTF systemd[1]: hello-app.service: Consumed 1.600s CPU time, 38.0M memory peak, 0B memory swap peak.
+Oct 24 08:45:19 DESKTOP-TH61CTF systemd[1]: hello-app.service: Scheduled restart job, restart counter is at 1.
+Oct 24 08:45:19 DESKTOP-TH61CTF systemd[1]: Started hello-app.service - Hello Node app.
+Oct 24 08:45:20 DESKTOP-TH61CTF node[12394]: Listening on 3000
+
+## Firewall
+Status: active
+Logging: on (low)
+Default: deny (incoming), allow (outgoing), disabled (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+22/tcp (OpenSSH)           ALLOW IN    Anywhere                  
+80/tcp (Nginx HTTP)        ALLOW IN    Anywhere                  
+22/tcp (OpenSSH (v6))      ALLOW IN    Anywhere (v6)             
+80/tcp (Nginx HTTP (v6))   ALLOW IN    Anywhere (v6)             
+
+
+## Through nginx on port 80
+HTTP/1.1 200 OK
+Server: nginx/1.24.0 (Ubuntu)
+Date: Sat, 24 Oct 2026 09:35:01 GMT
+Content-Type: text/plain
+Connection: keep-alive
+
+
+## Cron job and log
+   */5 * * * * /home/ayrus15/hello-app/healthcheck.sh
+2026-10-24T09:31:00+00:00 status=200
+2026-10-24T09:32:00+00:00 status=200
+2026-10-24T09:33:00+00:00 status=200
+2026-10-24T09:34:00+00:00 status=200
+2026-10-24T09:35:00+00:00 status=200

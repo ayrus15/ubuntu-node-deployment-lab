@@ -1,0 +1,14 @@
+   [Unit]
+   Description=Hello Node app
+   After=network.target
+
+   [Service]
+   Type=simple
+   User=ayrus15
+   WorkingDirectory=/home/ayrus15/hello-app
+   ExecStart=/usr/bin/node /home/ayrus15/hello-app/server.js
+   Restart=on-failure
+   RestartSec=3
+
+   [Install]
+   WantedBy=multi-user.target
